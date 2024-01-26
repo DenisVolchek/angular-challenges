@@ -1,0 +1,9 @@
+<app-card [list]="students" class="bg-light-red" (add)="onAddItem()" [template]="rowRef">
+    <img select="[image]" src="assets/img/student.webp" width="200px" />
+</app-card>
+
+<ng-template #rowRef let-item>
+    <app-list-item (clickButton)="deleteItem(item.id)">
+        {{item.firstName}}
+    </app-list-item>
+</ng-template>

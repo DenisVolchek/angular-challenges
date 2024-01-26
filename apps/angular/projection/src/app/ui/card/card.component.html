@@ -1,14 +1,18 @@
-<div class="flex w-fit flex-col gap-3 rounded-md border-2 border-black p-4" [class]="customClass">
+<div class="flex w-fit flex-col gap-3 rounded-md border-2 border-black p-4">
 
     <ng-content image></ng-content>
 
     <section>
-        <app-list-item *ngFor="let item of list" (clickButton)="deleteItem(item.id)">
-            <span>{{item.firstName}}</span>
-        </app-list-item>
+        <ng-container *ngFor="let item of list">
+            <ng-container [ngTemplateOutlet]="template || defaultTemplate" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+        </ng-container>
     </section>
 
     <button class="rounded-sm border border-blue-500 bg-blue-300 p-2" (click)="add.emit()">
         Add
     </button>
 </div>
+
+<ng-template #defaultTemplate let-item>
+    <span>{{item.firstName}} -- Default</span>
+</ng-template>
