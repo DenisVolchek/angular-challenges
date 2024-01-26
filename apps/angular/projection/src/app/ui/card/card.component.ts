@@ -13,6 +13,9 @@ import { ListItemComponent } from '../list-item/list-item.component';
   templateUrl: './card.component.html',
   standalone: true,
   imports: [NgIf, NgFor, ListItemComponent, NgTemplateOutlet],
+  host: {
+    class: 'border-2 border-black rounded-md p-4 w-fit flex flex-col gap-3',
+  },
 })
 export class CardComponent {
   @Output() add = new EventEmitter<void>();
