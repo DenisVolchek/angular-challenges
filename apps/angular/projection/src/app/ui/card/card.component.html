@@ -3,7 +3,9 @@
     <ng-content image></ng-content>
 
     <section>
-        <app-list-item *ngFor="let item of list" [name]="item.firstName" [id]="item.id" [type]="type"></app-list-item>
+        <app-list-item *ngFor="let item of list" (clickButton)="deleteItem(item.id)">
+            <span>{{item.firstName}}</span>
+        </app-list-item>
     </section>
 
     <button class="rounded-sm border border-blue-500 bg-blue-300 p-2" (click)="addNewItem()">

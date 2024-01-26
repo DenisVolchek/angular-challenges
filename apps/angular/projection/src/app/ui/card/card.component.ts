@@ -31,4 +31,12 @@ export class CardComponent {
       this.studentStore.addOne(randStudent());
     }
   }
+
+  deleteItem(id: number) {
+    if (this.type === CardType.TEACHER) {
+      this.teacherStore.deleteOne(id);
+    } else if (this.type === CardType.STUDENT) {
+      this.studentStore.deleteOne(id);
+    }
+  }
 }
